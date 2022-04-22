@@ -1,0 +1,25 @@
+name: 'snapshot'
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+      - 'releases/*'
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Check out action repository
+        uses: actions/checkout@v3
+        with:
+          repository: dsp-testing/go-snapshot-action
+          path: go-snapshot-action
+          token: ${{ secrets.REPO_TOKEN }}
+          # path: path/to/package-root # optional (TODO)
+      - name: Run snapshot action
+        uses: ./go-snapshot-action
+        with:
+          token: ${{ secrets.REPO_TOKEN }}
