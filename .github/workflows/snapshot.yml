@@ -22,4 +22,4 @@ jobs:
         uses: ./go-snapshot-action
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          detector-url: ${{ github.repository }}
+          detector-url: ${{ github.server_url }}/${{ github.repository }}
