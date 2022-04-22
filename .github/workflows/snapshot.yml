@@ -17,7 +17,7 @@ jobs:
         with:
           repository: dsp-testing/go-snapshot-action
           path: go-snapshot-action
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.REPO_TOKEN }}
           # path: path/to/package-root # optional (TODO)
       - name: Run snapshot action
         uses: ./go-snapshot-action
